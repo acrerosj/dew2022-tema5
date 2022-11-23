@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .tarjeta {
+      border: 1px solid blue;
+      width: 400px;
+    }
+  </style>
+</head>
+<body>
+  <ul>
+    <li>elemento1</li>
+    <li>elemento2</li>
+    <li>elemento3</li>
+    <li>elemento4</li>
+    <li>elemento5</li>
+    <li>elemento6</li>
+    <li>elemento7</li>
+    <li>elemento8</li>
+  </ul>
+  <div class="tarjeta">
+    <h1>Nombre</h1>
+    <h2>Profesion</h2>
+    <h3>Edad</h3>
+  </div>
+  <div id="contenedor"></div>
+  <script>
+    // document.querySelectorAll('li')
+    //   .forEach(li => li.addEventListener('click', ()=>li.remove()));
+
+    // document.querySelectorAll('li')
+    //   .forEach(li => li.addEventListener('click', li.remove));
+
+    document.querySelector('ul')
+      .addEventListener('click', (e)=>e.currentTarget.remove());
+
+    function crearTarjeta(nombre, profesion, edad) {
+      let nueva = `
+        <div class="tarjeta">
+          <h1>${nombre}</h1>
+          <h2>${profesion}</h2>
+          <h3>${edad}</h3>
+        </div>
+      `;
+      document.getElementById('contenedor')
+      .insertAdjacentHTML('beforeend',nueva);
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Preferencias</title>
+</head>
+<body>
+  <h1>Preferencias de usuario</h1>
+  <p>
+    <label for="color">Color de texto:</label>
+    <input type="color" name="color" id="color">
+  </p>
+  <p>
+    <label for="size">Tamaño del texto:</label>
+    <span id="span-size">12</span>
+    <input type="range" name="size" id="size" min="8" max="52" value="12px">
+  </p>
+  <p><button id="btn-remove-preferences">Eliminar Preferencias</button></p>
+  <div class="estilo">
+    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Inventore asperiores nobis magni necessitatibus officia velit explicabo impedit eius obcaecati consequuntur, ut rem nihil iste, voluptatibus perferendis consectetur, fugiat hic laborum.</p>
+    <p>Otro parafo</p>
+  </div>
+  <script>
+    const contenedor = document.querySelector('.estilo');
+    const inColor = document.getElementById('color');
+    const inSize = document.getElementById('size');
+    const spanSize = document.getElementById('span-size');
+
+    inColor.addEventListener('input', ()=>{
+      let color = inColor.value;
+      contenedor.style.color = color;
+      localStorage.setItem('color', color);
+    });
+
+    inSize.addEventListener('input', ()=>{
+      let size = inSize.value;
+      contenedor.style.fontSize = size + "px";
+      spanSize.textContent = size;
+      localStorage.setItem('size', size);
+    })
+
+    window.addEventListener('load', ()=>{
+      console.log('página cargada');
+      color = localStorage.getItem('color') || "#ff0000";
+      size = localStorage.getItem('size') || 25;
+      console.log(color, size);
+      contenedor.style.color = color;
+      contenedor.style.fontSize = size + "px";
+      spanSize.textContent = size;
+      inColor.value = color;
+      inSize.value = size;
+    });
+
+    document.getElementById('btn-remove-preferences')
+      .addEventListener('click', ()=> {
+        localStorage.removeItem('color');
+        localStorage.removeItem('size');
+      });
+  </script>
+</body>
+</html>
