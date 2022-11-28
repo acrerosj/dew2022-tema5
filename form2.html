@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1>Formularios 2</h1>
+  <form action="" name="formulario1">
+    <input type="text" name="texto1">
+    <input type="text" name="texto2" id="">
+    <select name="seleccion">
+      <option value="1">elemento 1</option>
+      <option value="2">elemento 2</option>
+      <option value="3">elemento 3</option>
+      <option value="4">elemento 4</option>
+      <option value="5">elemento 5</option>
+      <option value="6">elemento 6</option>
+      <option value="7">elemento 7</option>
+    </select>
+    <select name="seleccion2" multiple>
+      <option value="1">elemento 1</option>
+      <option value="2">elemento 2</option>
+      <option value="3">elemento 3</option>
+      <option value="4">elemento 4</option>
+      <option value="5">elemento 5</option>
+      <option value="6">elemento 6</option>
+      <option value="7">elemento 7</option>
+    </select>
+    <input type="radio" value="si" name="pregunta" id="pregunta_si"/> SI
+    <input type="radio" value="no" name="pregunta" id="pregunta_no"/> NO
+    <input type="radio" value="nsnc" name="pregunta" id="pregunta_nsnc"/> NS/NC
+    <br>
+    <input type="checkbox" value="condiciones" name="condiciones" id="condiciones"/> He leído y acepto las condiciones
+    <input type="checkbox" value="privacidad" name="privacidad" id="privacidad"/> He leído la política de privacidad
+  </form>
+  <button onclick="verRadio()">Ver Radio</button>
+  <script>
+    document.formulario1.texto1.addEventListener('blur', ()=>{
+      console.log('abandona el input texto1');
+      console.log(document.formulario1.texto1.value);
+      if (document.formulario1.texto1.value.includes('a')) {
+        console.log('incorrecto');
+        document.formulario1.texto1.focus();
+      }
+    });
+
+    document.formulario1.texto1.addEventListener('keyup', ()=>{
+      console.log('cambiando...');
+      console.log(document.formulario1.texto1.value);
+      if (document.formulario1.texto1.value == "exit") {
+        //document.formulario1.texto1.blur();
+        document.formulario1.texto2.focus();
+      }
+    })
+
+    document.formulario1.seleccion2.addEventListener('change', ()=>{
+      let seleccion2 = document.formulario1.seleccion2;
+      // let seleccionados = [];
+      // [...seleccion2.options].forEach(op => {
+      //   console.log(op.value, op.selected);
+      //   if (op.selected) seleccionados.push(op.value);
+      // });
+      let seleccionados = [...seleccion2.options].filter(o => o.selected).map(o=>o.value);
+      console.log('Seleccionados: ', seleccionados);
+    });
+
+    function verRadio() {
+      var elementos = document.getElementsByName("pregunta");
+ 
+      for(var i=0; i<elementos.length; i++) {
+        console.log(" Elemento: " + elementos[i].value + "\n Seleccionado: " + elementos[i].checked);
+      }
+
+      let condiciones;
+      if (document.formulario1.condiciones.checked) {
+        condiciones =document.formulario1.condiciones.value;
+      } else {
+        condiciones = 'no acepta';
+      }
+      console.log(condiciones);
+
+    }
+
+    
+  </script>
+</body>
+</html>
