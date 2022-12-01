@@ -42,6 +42,18 @@ function addProduct(id) {
   //updateCart();
 }
 
+function decrementProduct(id) {
+  let product = cart.find(p => p.id == id);
+  if (product) {
+    product.amount--;
+    updateProduct(product.id, product.amount);
+    if (product.amount==0) {
+      cart.splice(cart.indexOf(product),1);
+    }
+  }
+}
+
+
 function getCart() {
   let cart2 = JSON.parse(localStorage.cart);
   console.log(cart2);
