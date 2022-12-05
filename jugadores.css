@@ -1,0 +1,9 @@
+.player {
+  float: left;
+  margin: 5px;
+  border: 1px solid blue;
+  background-color: #ddf;
+  width: 150px;
+  padding: 5px;
+  text-align: center;
+}

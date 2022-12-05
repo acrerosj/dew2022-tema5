@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jugadores</title>
+  <link rel="stylesheet" href="jugadores.css">
+  <script src="player.js"></script>
+  <script src="team.js"></script>
+  <script src="players.js" defer></script>
+</head>
+<body>
+  <h1>Jugadores de la selección</h1> 
+  <form action="" name="createplayer">
+    <p>
+      <label for="name">Nombre: </label>
+      <input type="text" name="name" id="name">
+    </p>
+    <p>
+      <label for="team">Selección: </label>
+      <input type="text" name="team" id="team">
+    </p>
+    <p>
+      <label for="number">Número</label>
+      <input type="number" name="number" id="number">
+    </p>
+    <p>
+      <input type="submit" value="Crear">
+    </p>
+  </form>
+  <h1>Listado Jugadores</h1>
+  <div class="players"></div>
+</body>
+</html>
